@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/display_settings"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+        <com.android.settings.BrightnessPreference
+                android:key="brightness"
+                android:title="@string/brightness"
+                android:persistent="false"/>
+
+        <com.android.settings.AutoBrightnessSwitch 
+                android:key="auto_brightness"
+                android:title="@string/auto_brightness"
+                android:summary="@string/auto_brightness_summary"/>
+
+        <PreferenceScreen
+                android:key="wallpaper"
+                android:title="@string/wallpaper_settings_title"
+                android:fragment="com.android.settings.WallpaperTypeSettings" />
+
+        <CheckBoxPreference
+            android:key="accelerometer"
+            android:title="@string/accelerometer_title"/>
+
+        <ListPreference
+                android:key="screen_timeout"
+                android:title="@string/screen_timeout"
+                android:summary="@string/screen_timeout_summary"
+                android:persistent="false"
+                android:entries="@array/screen_timeout_entries"
+                android:entryValues="@array/screen_timeout_values" />
+
+        <PreferenceScreen
+                android:key="screensaver"
+                android:title="@string/screensaver_settings_title"
+                android:fragment="com.android.settings.DreamSettings" />
+		        
+        <PreferenceScreen
+                android:key="dream"
+                android:title="@string/screensaver_settings_title" />
+
+        <com.android.settings.WarnedListPreference
+                android:key="font_size"
+                android:title="@string/title_font_size"
+                android:summary="@string/summary_font_size"
+                android:entries="@array/entries_font_size"
+                android:entryValues="@array/entryvalues_font_size"
+                android:dialogTitle="@string/dialog_title_font_size" />
+                
+         <com.android.settings.WarnedListPreference
+                android:key="display_status"
+                android:title="@string/set_display_mode"
+                android:summary="@string/summary_display_mode"
+                android:dialogTitle="@string/dialog_title_display_mode" />
+
+         <com.android.settings.WarnedListPreference
+                android:key="hdr_mode"
+                android:title="@string/hdr_mode"
+                android:summary="@string/summary_hdr_mode"
+                android:dialogTitle="@string/dialog_title_hdr_mode" />
+ 
+	  <PreferenceScreen
+                android:key="position_display"
+                android:title="@string/position_display_settings_title" />
+                
+		<ListPreference
+		        android:key="default_frequency"
+		        android:title="@string/tv_default_frequency"
+		        android:summary="@string/tv_default_frequency_summary"
+		        android:persistent="false"
+		        android:entries="@array/default_frequency_entries"
+		        android:entryValues="@array/default_frequency_values" />
+        <CheckBoxPreference
+            android:key="notification_pulse"
+            android:title="@string/notification_pulse_title"
+            android:persistent="false" />
+
+        <PreferenceScreen
+                android:key="wifi_display"
+                android:title="@string/wifi_display_settings_title"
+                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
+        <com.android.settings.CustomGsensorSwitch 
+                android:key="gsensor_config"
+                android:title="@string/custom_gsensor"
+                android:summary="@string/custom_gsensor_summary"/>
+
+    <CheckBoxPreference
+            android:key="app_change_orientation"
+            android:title="@string/app_change_orientation_title"
+            android:defaultValue="true" />
+</PreferenceScreen>

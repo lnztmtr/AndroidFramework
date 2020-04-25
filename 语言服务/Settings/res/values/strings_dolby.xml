@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 Dolby Laboratories
+
+     This program is protected under international and U.S. copyright laws as
+     an unpublished work. This program is confidential and proprietary to the
+     copyright owners. Reproduction or disclosure, in whole or in part, or the
+     production of derivative works therefrom without the express permission of
+     the copyright owners is prohibited.
+
+                   Copyright (C) 2012 by Dolby Laboratories,
+                               All rights reserved.
+-->
+
+<resources>
+
+    <!-- DOLBY_DAP_GUI -->
+
+    <string name="sound_dolby_category_title">DOLBY DIGITAL PLUS</string>
+    <string name="sound_dolby_ds_launch_app">Launch App</string>
+    <string name="sound_dolby_ds_profile">Profile</string>
+    <string name="sound_dolby_ds_profile_off">OFF</string>
+    <string name="dolby_profile_movie">Movie</string>
+    <string name="dolby_profile_music">Music</string>
+    <string name="dolby_profile_game">Game</string>
+    <string name="dolby_profile_voice">Voice</string>
+    <string name="dolby_profile_preset_1">Custom 1</string>
+    <string name="dolby_profile_preset_2">Custom 2</string>
+    <string name="dolby_on">ON</string>
+    <string name="dolby_off">OFF</string>
+
+    <!-- DOLBY_DAP_GUI END -->
+
+</resources>

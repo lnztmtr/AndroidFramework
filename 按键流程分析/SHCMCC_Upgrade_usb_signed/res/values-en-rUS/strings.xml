@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">U DISK UPGRADE</string>
+    <string name="savepath">/cache/update/</string>
+    <string name="title">U disk upgrade tips</string>
+    <string name="okLabel">OK</string>
+    <string name="cancelLabel">Cancel</string>
+    <string name="ts1">Find the upgrade file, start upgrade</string>
+    <string name="ts2">The upgrade file not found version information</string>
+    <string name="ts3">Checking version</string>
+    <string name="ts4">Device type error</string>
+    <string name="ts5">Upgrade version file error</string>
+    <string name="ts6">The same version does not need to upgrade!</string>
+    <string name="ts7">Start copying files</string>
+    <string name="ts8">Found a new version, are you sure you want to upgrade?</string>
+    <string name="ts9">Upgrade failed</string>
+    <string name="copy">Copying files (do not remove the USB equipment!)</string>
+    <string name="ts10">Copy complete, whether to reopen the upgrade?</string>
+    <string name="ts11">File copy unfinished...</string>
+    <string name="usbUp">USB UPGRADE</string>
+    <string name="nowpost">The current version number:</string>
+    <string name="postbuild">Version number:</string>
+    <string name="reboot">Tip: when the next reboot the device, will be upgraded to a selected version.</string>
+    <string name="titlefirst">Tip:Click OK upgrade,click return exit.</string>
+    <string name="ziperror">Upgrade file version is not correct, please check the update package!</string>
+    <string name="nozipfile">Upgrade directory found no upgrade package, please check!</string>
+</resources>

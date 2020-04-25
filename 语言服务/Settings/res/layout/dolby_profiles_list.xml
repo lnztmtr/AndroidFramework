@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 Dolby Laboratories
+
+     This program is protected under international and U.S. copyright laws as
+     an unpublished work. This program is confidential and proprietary to the
+     copyright owners. Reproduction or disclosure, in whole or in part, or the
+     production of derivative works therefrom without the express permission of
+     the copyright owners is prohibited.
+
+                   Copyright (C) 2012 by Dolby Laboratories,
+                               All rights reserved.
+-->
+
+<!-- Layout of Dolby DS profile list preference. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/dolby_profiles_bg"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/dolby_profiles_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/dolby_profiles_list_bg"
+            android:divider="@color/black"
+            android:dividerHeight="2px"
+            android:listSelector="@android:color/transparent" />
+
+        <CheckBox
+            android:id="@+id/dolby_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/dolby_chk_power"
+            android:paddingLeft="70dp" />
+    </LinearLayout>
+
+</FrameLayout>

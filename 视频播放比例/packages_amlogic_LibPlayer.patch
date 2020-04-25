@@ -1,0 +1,56 @@
+From 87544f33db67656b139ca35ed6e491e7626f5afc Mon Sep 17 00:00:00 2001
+From: jipeng.zhao <jipeng.zhao@amlogic.com>
+Date: Wed, 19 Jun 2019 20:43:56 +0800
+Subject: [PATCH] LibPlayer: bootplayer:Fake ts file, bootplayer crash [1/1]
+
+PD#IPTV-3289
+
+Problem:
+After renamed a mp4 container file to ts, bootplayer crash
+
+Solution:
+After found ts sync header, seek to old offset.
+
+Verify:
+S905L2-P261
+
+Change-Id: Icea9c9e766fc95f2f848f4c6fe9557ec56333415
+Signed-off-by: jipeng.zhao <jipeng.zhao@amlogic.com>
+---
+
+diff --git a/amffmpeg/libavformat/utils.c b/amffmpeg/libavformat/utils.c
+index 1a22978..87376f2 100644
+--- a/amffmpeg/libavformat/utils.c
++++ b/amffmpeg/libavformat/utils.c
+@@ -59,6 +59,7 @@
+ 
+ //added by aml
+ #include <cutils/properties.h>
++#include <sys/stat.h>
+ 
+ #define DURATION_MAX_READ_SIZE 250000LL
+ #define DURATION_ESTIMATE_MAX_READ_SIZE 4096LL
+@@ -641,14 +642,22 @@
+                 avio_seek(pb, -1, SEEK_CUR);
+                 data_offset --;
+                 av_log(NULL, AV_LOG_INFO, "*****[%s] [%llx] data_offset=%d\n", __FUNCTION__, avio_tell(pb), data_offset);
+-                if (s)
++                if (s) {
+                     s->data_offset = data_offset;
++                    /* +[SE] [BUG][IPTV-3289][jipeng.zhao]After renamed a mp4 container file to ts, bootplayer played crash */
++                    //only local media use this case
++                    struct stat sb;
++                    if ( stat(filename, &sb) == 0 && S_ISREG(sb.st_mode) ) {
++                        avio_seek(pb, oldoffset, SEEK_SET);
++                    }
++                }
+                 break;
+             }
+             /*find the ts sync header if no erroris,not eof and interrupt*/
+         }
+         while (!(pb->error || pb->eof_reached || url_interrupt_cb()));
+     }
++
+      if(strstr(filename,"rtp://") != NULL){
+         extern AVInputFormat ff_mpegts_demuxer;
+         *fmt = &ff_mpegts_demuxer;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="progress_message" />
+    <item type="id" name="myView_ProgressBar" />
+    <item type="id" name="StatusMsg" />
+    <item type="id" name="listtext" />
+    <item type="id" name="img" />
+    <item type="id" name="linearlayout" />
+    <item type="id" name="linearlayout1" />
+    <item type="id" name="ssid" />
+    <item type="id" name="liner" />
+    <item type="id" name="ssid2" />
+    <item type="id" name="PostBuild" />
+    <item type="id" name="listView" />
+    <item type="id" name="textone" />
+    <item type="id" name="tip" />
+    <item type="id" name="text" />
+    <item type="id" name="tipbutton" />
+    <item type="id" name="btnsave" />
+    <item type="id" name="btnchanle" />
+    <item type="id" name="onetext" />
+</resources>

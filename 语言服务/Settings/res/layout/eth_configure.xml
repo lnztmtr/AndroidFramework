@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dip"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/table"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+            </LinearLayout>
+
+       <!-- Device list -->
+
+        <TextView android:id="@+id/eth_dev_list_text"
+                style="?android:attr/textAppearanceSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:text="@string/eth_dev_list" />
+
+        <!-- The entries will be set programmatically -->
+        <Spinner android:id="@+id/eth_dev_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+        <!-- Connection type -->
+        <TextView android:id="@+id/eth_con_type"
+                style="?android:attr/textAppearanceSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:text="@string/eth_con_type" />
+        <RadioGroup android:id="@+id/con_type"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton android:id="@+id/dhcp_radio"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eth_con_type_dhcp">
+                </RadioButton>
+                <RadioButton android:id="@+id/manual_radio"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eth_con_type_manual">
+                </RadioButton>
+                <RadioButton android:id="@+id/auth_dhcp_radio"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eth_con_type_auth_dhcp">
+                </RadioButton>
+                <RadioButton android:id="@+id/pppoe_radio"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eth_con_type_pppoe">
+                </RadioButton>
+        </RadioGroup>
+
+        <!-- IP address -->
+        <LinearLayout android:id="@+id/eth_static_fields"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dip"
+            android:padding="0dip"
+            android:visibility="gone"
+            android:orientation="vertical">
+                <TextView android:id="@+id/ipaddr_text"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dip"
+                        android:text="@string/eth_ipaddr" />
+                <EditText android:id="@+id/ipaddr_edit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dip"
+                        android:singleLine="true" />
+                <TextView android:id="@+id/netmask_text"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dip"
+                        android:text="@string/eth_mask" />
+                <EditText android:id="@+id/netmask_edit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dip"
+                        android:singleLine="true" />
+                <TextView android:id="@+id/dns_text"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dip"
+                        android:text="@string/eth_dns" />
+                <EditText android:id="@+id/eth_dns_edit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dip"
+                        android:singleLine="true" />
+                <TextView android:id="@+id/gw_text"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dip"
+                        android:text="@string/eth_gw" />
+                <EditText android:id="@+id/eth_gw_edit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dip"
+                        android:singleLine="true"
+                        android:nextFocusDown="@+id/proxy_settings" />
+                <TextView 
+                        android:id="@+id/user_text"                        
+                        style="?android:attr/textAppearanceSmall"                        
+                        android:layout_width="fill_parent"                        
+                        android:layout_height="wrap_content"                        
+                        android:layout_marginTop="8dip"                        
+                        android:text="@string/eth_username" />                
+                <EditText android:id="@+id/eth_user_edit"                        
+                        android:layout_width="fill_parent"                        
+                        android:layout_height="wrap_content"                        
+                        android:layout_marginTop="2dip"                        
+                        android:singleLine="true" />                
+                <TextView android:id="@+id/password_text"                        
+                        style="?android:attr/textAppearanceSmall"                        
+                        android:layout_width="fill_parent"                        
+                        android:layout_height="wrap_content"                        
+                        android:layout_marginTop="8dip"                        
+                        android:text="@string/eth_password" />                
+                <EditText android:id="@+id/eth_password_edit"                        
+                        android:layout_width="fill_parent"                        
+                        android:layout_height="wrap_content"                        
+                        android:layout_marginTop="2dip"                        
+                        android:singleLine="true" />
+                <!--<CheckBox 
+                        android:id="@+id/auto_dial_checkbox" 
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="wrap_content" 
+                        android:layout_height="wrap_content" 
+                        android:text="@string/pppoe_auto_dial" /> 
+                -->
+                <RadioGroup android:id="@+id/authdhcp_type"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton android:id="@+id/authdhcp_enable"
+                           style="?android:attr/textAppearanceSmall"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:text="@string/eth_authdhcp_enable">
+                        </RadioButton>
+                        <RadioButton android:id="@+id/authdhcp_disable"
+                           style="?android:attr/textAppearanceSmall"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:text="@string/eth_authdhcp_disable">
+                        </RadioButton>
+                </RadioGroup>
+        </LinearLayout>
+
+
+            <!-- proxy -->
+            <TextView android:id="@+id/proxy_settings_title"
+                style="@style/network_item_label"
+                android:text="@string/proxy_settings_title" />
+
+            <Spinner android:id="@id/proxy_settings"
+                style="@style/network_item_content"
+                android:prompt="@string/proxy_settings_title"
+                android:entries="@array/wifi_proxy_settings" />
+
+            <LinearLayout android:id="@+id/proxy_fields"
+                        style="@style/network_section"
+                        android:visibility="gone">
+
+                <LinearLayout android:id="@+id/proxy_warning_limited_support"
+                    style="@style/network_item">
+                    <TextView
+                        style="@style/network_item_label_hint"
+                        android:text="@string/proxy_warning_limited_support" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/network_item">
+                    <TextView
+                        style="@style/network_item_label"
+                        android:text="@string/proxy_hostname_label" />
+
+                    <EditText android:id="@+id/proxy_hostname"
+                        style="@style/network_item_content"
+                        android:hint="@string/proxy_hostname_hint"
+                        android:inputType="textNoSuggestions"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/network_item">
+                    <TextView
+                        style="@style/network_item_label"
+                        android:text="@string/proxy_port_label" />
+
+                    <EditText android:id="@+id/proxy_port"
+                        style="@style/network_item_content"
+                        android:hint="@string/proxy_port_hint"
+                        android:inputType="number"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/network_item">
+                    <TextView
+                        style="@style/network_item_label"
+                        android:text="@string/proxy_exclusionlist_label" />
+
+                    <EditText android:id="@+id/proxy_exclusionlist"
+                        style="@style/network_item_content"
+                        android:hint="@string/proxy_exclusionlist_hint"
+                        android:inputType="textNoSuggestions"
+                        android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout> <!-- proxy_fields -->
+
+    </LinearLayout>
+
+</ScrollView>

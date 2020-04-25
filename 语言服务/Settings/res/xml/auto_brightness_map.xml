@@ -1,0 +1,13 @@
+<MapDatas xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
+
+<DataItem 
+    settings:batteryLevel="45"
+    settings:brightnessLevel="125" 
+    settings:brightnessChargingLevel="180" />
+
+<DataItem 
+    settings:batteryLevel="20"
+    settings:brightnessLevel="10" 
+    settings:brightnessChargingLevel="20" />
+
+</MapDatas>

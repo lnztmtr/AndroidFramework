@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/background_dialog_scale" android:paddingLeft="50.0dip" android:paddingTop="20.0dip" android:paddingRight="50.0dip" android:paddingBottom="0.0dip" android:layout_width="wrap_content" android:layout_height="270.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/title" />
+    <TextView android:textSize="24.0dip" android:id="@id/progress_message" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="10.0dip" android:text="@string/copy" />
+    <net.sunniwell.widget.SWProgress android:id="@id/myView_ProgressBar" android:visibility="visible" android:layout_width="600.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:maxHeight="30.0dip" android:max="100" android:minWidth="48.0dip" android:minHeight="30.0dip" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:gravity="center|left|top" android:id="@id/StatusMsg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/title" />
+</LinearLayout>

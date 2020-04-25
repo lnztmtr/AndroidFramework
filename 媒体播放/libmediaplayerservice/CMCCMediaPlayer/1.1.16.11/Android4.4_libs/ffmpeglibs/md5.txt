@@ -1,0 +1,3 @@
+e4c74ed2a5e8a3a2734a14710f2c2c61  libcmavcodec.so
+d30d22a065ef1cd498f12d2dd494c73c  libcmavformat.so
+d60958a2421b372a2f79f725603bebf3  libcmavutil.so

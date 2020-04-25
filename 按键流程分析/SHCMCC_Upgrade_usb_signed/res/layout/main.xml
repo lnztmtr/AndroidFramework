@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/linearlayout" android:background="@color/trans" android:layout_width="500.0dip" android:layout_height="300.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/linearlayout1" android:background="@drawable/a" android:layout_width="fill_parent" android:layout_height="283.0dip">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="30.0dip" android:id="@id/ssid" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginLeft="170.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" android:text="@string/usbUp" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/liner" android:layout_width="fill_parent" android:layout_height="45.0dip">
+            <TextView android:textSize="24.0dip" android:textColor="@color/label_gray" android:id="@id/ssid2" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/nowpost" />
+            <TextView android:textSize="24.0dip" android:textColor="@color/label_gray" android:id="@id/PostBuild" android:layout_width="wrap_content" android:layout_height="32.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_weight="1.07">
+            <ListView android:id="@id/listView" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="126.0dip" android:listSelector="@android:color/transparent" android:cacheColorHint="#00000000" android:scrollbarFadeDuration="-1" android:fadeScrollbars="false" />
+            <TextView android:textSize="24.0sp" android:layout_gravity="bottom|center" android:id="@id/textone" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="75.0dip" android:layout_marginRight="75.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/tip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="16.0dip" android:gravity="center" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/titlefirst" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/tipbutton" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <Button android:id="@id/btnsave" android:background="@drawable/button" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/okLabel" />
+            <Button android:id="@id/btnchanle" android:background="@drawable/button" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="@string/cancelLabel" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

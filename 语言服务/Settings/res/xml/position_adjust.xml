@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+
+        <TextView
+            android:id="@+id/screen_tip_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="240dp"
+            android:layout_marginRight="240dp"
+            android:focusable="true"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+        <ImageView
+            android:id="@+id/img_progress_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/screen_tip_01"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_per_100"
+            android:layout_marginTop="20dp" />
+
+        <LinearLayout
+            android:id="@+id/img_hint_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/screen_tip_01"
+            android:layout_marginTop="130dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/img_num_hundred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:background="@drawable/ic_num1"/>
+
+            <ImageView
+                android:id="@+id/img_num_ten"
+                android:background="@drawable/ic_num0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/img_num_unit"
+                android:background="@drawable/ic_num0" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/img_per"
+                 android:src="@drawable/per" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/screen_tip_01"
+            android:layout_marginTop="240dp" >
+
+            <ImageButton
+                android:id="@+id/btn_position_zoom_in"
+                android:background="@drawable/button_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/img_progress_bg"
+                android:focusable="false" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btn_position_zoom_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:focusable="false"
+                android:background="@drawable/button_plus"
+                android:layout_toRightOf="@+id/img_progress_bg">
+            </ImageButton>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

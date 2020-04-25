@@ -1,0 +1,114 @@
+From ee90aa41f893704d6d1bb3162201ed79c455414e Mon Sep 17 00:00:00 2001
+From: "chen.chen1" <chen.chen1@amlogic.com>
+Date: Thu, 30 May 2019 13:04:44 +0800
+Subject: [PATCH] LibPlayer: play_4K: 4K H264 or H265 need hw demux. [1/2]
+
+PD#IPTV-2975
+
+Problem:
+LibPlayer play 4K files with cartons sometimes
+
+Solution:
+4K H264 or H265 need hw demux
+
+Verify:
+verified on S905L 2-B
+
+Change-Id: If16462fb758f92f7692550bb0619ea1d95aab8e1
+Signed-off-by: Chen Chen <chen.chen1@amlogic.com>
+---
+ amplayer/player/player.c      |  7 +++++++
+ amplayer/player/player_av.c   |  4 ++--
+ amplayer/player/player_para.c | 17 ++++++++++++++++-
+ 3 files changed, 25 insertions(+), 3 deletions(-)
+ mode change 100644 => 100755 amplayer/player/player.c
+ mode change 100644 => 100755 amplayer/player/player_av.c
+ mode change 100644 => 100755 amplayer/player/player_para.c
+
+diff --git a/amplayer/player/player.c b/amplayer/player/player.c
+old mode 100644
+new mode 100755
+index f427f78..48b3df0
+--- a/amplayer/player/player.c
++++ b/amplayer/player/player.c
+@@ -1859,6 +1859,8 @@ static int hevc_insert_missed_metainfo(play_para_t *player)
+     am_packet_t *pkt = player->p_pkt;
+     unsigned char *buf;
+ 	int size;
++	int64_t start = av_gettime();
++	int64_t end;
+ 
+ 	do
+ 	{
+@@ -1891,6 +1893,11 @@ static int hevc_insert_missed_metainfo(play_para_t *player)
+ 			pkt->avpkt_isvalid = 0;
+ 			pkt->avpkt_newflag = 0;
+ 			pkt->data_size = 0;
++			end = av_gettime();
++			if (end-start >= 2000000) {
++				log_print("hevc_insert_missed_metainfo time out.\n");
++				break;
++			}
+ 		} else {
+ 			log_print("hevc_insert_missed_metainfo read_av_packet failed\n");
+ 			break;
+diff --git a/amplayer/player/player_av.c b/amplayer/player/player_av.c
+old mode 100644
+new mode 100755
+index 1b4473e..51133ab
+--- a/amplayer/player/player_av.c
++++ b/amplayer/player/player_av.c
+@@ -3012,8 +3012,8 @@ int cache_avpkt_enable(play_para_t *player)
+         log_print("debug_cache:%d\n", debug_cache);
+     }
+ 
+-    if(debug_cache == 0 && player->vstream_info.video_width > 1920 && player->vstream_info.video_height > 1200){
+-        log_print("4k video cant be supported by cache ring buffer. width:%d height:%d\n", player->vstream_info.video_width, player->vstream_info.video_height);
++    if (player->vstream_info.video_width > 1920 && player->vstream_info.video_height > 1200) {
++        log_print("4k video can't be supported by cache ring buffer. width:%d height:%d\n", player->vstream_info.video_width, player->vstream_info.video_height);
+         return 0;
+     }
+ 
+diff --git a/amplayer/player/player_para.c b/amplayer/player/player_para.c
+old mode 100644
+new mode 100755
+index 5e1508d..29595c4
+--- a/amplayer/player/player_para.c
++++ b/amplayer/player/player_para.c
+@@ -2362,10 +2362,14 @@ int player_dec_init(play_para_t *p_para)
+ 
+     int t, is_hevc = 0;
+     int is_truehd = 0;
++    int video_index = -1;
+     for (t = 0; t < p_para->pFormatCtx->nb_streams; t++) {
+         if (p_para->pFormatCtx->streams[t]->codec->codec_id == CODEC_ID_HEVC) {
+             is_hevc = 1;
+-            break;
++            video_index = t;
++        }
++        if (p_para->pFormatCtx->streams[t]->codec->codec_id == CODEC_ID_H264) {
++            video_index = t;
+         }
+     }
+     //for ts file, ac3 & truehd share the same pid,our hw demux mix the two audio streams together which cause decoder pause
+@@ -2428,6 +2432,17 @@ int player_dec_init(play_para_t *p_para)
+         }
+     }
+ 
++    //4k H264 or H265 ts file local play,need hw demux
++    if (-1 != video_index && (memcmp(p_para->pFormatCtx->iformat->name, "mpegts", 6) == 0)) {
++        int video_width = p_para->pFormatCtx->streams[video_index]->codec->width;
++        int video_hegiht = p_para->pFormatCtx->streams[video_index]->codec->height;
++        if (p_para->pFormatCtx->pb->local_playback == 1 && video_width * video_hegiht >= 3840*2160) {
++            file_type = MPEG_FILE;
++            stream_type = STREAM_TS;
++            ret = PLAYER_SUCCESS;
++            log_print("4k H264 or H265 ts file local play,need hw demux!\n");
++        }
++    }
+ 
+     if (ret != PLAYER_SUCCESS) {
+         set_player_state(p_para, PLAYER_ERROR);
+-- 
+2.10.2
+

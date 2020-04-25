@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<key_xml>
+    <hisi-key>
+        <key value="0x35cadd22" name="KEY_UP"         />      <!--key up-->
+        <key value="0x2dd2dd22" name="KEY_DOWN"       />      <!--key down-->
+        <key value="0x3ec1dd22" name="KEY_RIGHT"      />      <!--key right-->
+        <key value="0x6699dd22" name="KEY_LEFT"       />      <!--key left -->
+        <key value="0x31cedd22" name="KEY_ENTER"      />      <!--key ok -->
+        <key value="0x6a95dd22" name="KEY_BACK"       />      <!--Back -->
+        <key value="0x7d82dd22" name="KEY_MENU"       />      <!-- -->
+        <key value="0x23dcdd22" name="KEY_POWER"      />      <!-- -->
+        <key value="0x7788dd22" name="KEY_HOME"       />      <!-- -->
+        <key value="0x7f80dd22" name="KEY_VOLUMEUP"   />      <!-- -->
+        <key value="0x7e81dd22" name="KEY_VOLUMEDOWN" />      <!-- -->
+        <key value="0x6d92dd22" name="KEY_1"          />      <!-- -->
+        <key value="0x6c93dd22" name="KEY_2"          />      <!-- -->
+        <key value="0x33ccdd22" name="KEY_3"          />      <!-- -->
+        <key value="0x718edd22" name="KEY_4"          />      <!-- -->
+        <key value="0x708fdd22" name="KEY_5"          />      <!-- -->
+        <key value="0x37c8dd22" name="KEY_6"          />      <!-- -->
+        <key value="0x758add22" name="KEY_7"          />      <!-- -->
+        <key value="0x748bdd22" name="KEY_8"          />      <!-- -->
+        <key value="0x3bc4dd22" name="KEY_9"          />      <!-- -->
+        <key value="0x7887dd22" name="KEY_0"          />      <!-- -->
+	<key value="0x32cddd22" name="KEY_TV"         />      <!-- -->
+        <key value="0x6e91dd22" name="KEY_MOVIE"      />      <!-- -->
+        <key value="0x7c83dd22" name="KEY_APPS"       />      <!-- -->
+        <key value="0x3cc3dd22" name="KEY_FAVOURITE"  />      <!-- -->
+        <key value="0xe31cdd22" name="KEY_F11"  />      <!-- -->
+	<key value="0x8e71dd22" name="KEY_F2"/>    <!--F2 -->
+	<key value="0x8d72dd22" name="KEY_F3"/>    <!--F3 -->
+        <!--guangdong:ysten.zhangjunjian,add for del key-->    
+        <key value="0x3fc0dd22" name="KEY_BACKSPACE"  />      <!-- -->
+        <!--end by zhangjunjian--> 
+	<key value="0xe11edd22" name="KEY_BACKSPACE"  />      <!-- -->
+	<key value="0x27d8dd22" name="KEY_BACKSPACE"  />      <!-- -->
+        <key value="0x728ddd22" name="KEY_SETUP"     />      <!-- -->
+        <key value="0x7a85dd22" name="KEY_CHANNELUP"  /> 
+        <key value="0x7986dd22" name="KEY_CHANNELDOWN"  /> 
+        <key value="0x639cdd22" name="KEY_MUTE"       />      <!-- -->
+        <key value="0x9e61dd22" name="KEY_XIRISEARCH"       />      <!-- -->
+	<key value="0x9d62dd22" name="KEY_XIRIRECORD"       />      <!-- -->
+	<key value="0x9669dd22" name="KEY_DIAL"       />      <!-- -->
+	<key value="0x9b64dd22" name="KEY_CHILD"       />      <!-- -->
+      	<key value="0x9a65dd22" name="KEY_EDUCATION"       />      <!-- -->
+        <key value="0x9966dd22" name="KEY_XIRIMUSIC"       />      <!-- -->
+      	<key value="0x9768dd22" name="KEY_PE"       />      <!-- -->
+	<key value="0x9867dd22" name="KEY_GAME"       />      <!-- -->
+	<key value="0x9c63dd22" name="KEY_APPLIANCE"       />      <!-- -->
+	<key value="0x32cddd22" name="KEY_XIRIRED"       />      <!-- -->
+	<key value="0x6e91dd22" name="KEY_XIRIGREEN"       />      <!-- -->
+	<key value="0x3cc3dd22" name="KEY_XIRIBLUE"       />    
+	<key value="0x22dddd22" name="KEY_PAGEUP"       />      <!-- -->
+	<key value="0x738cdd22" name="KEY_PAGEDOWN"       />      <!-- -->
+        <key value="0x25dadd22" name="KEY_LIVE"  /> <!--add by zhangy for live key -->
+		<key value="0x2fd0dd22" name="KEY_BACKSPACE"  /> <!--add by zhangy for delete key -->
+		<key value="0x0ff0dd22" name="KEY_MMM_Z"  /> <!--add by zhangy for M key -->
+        </hisi-key>
+        <other2-key>
+	<key value="0xb9461420" name="KEY_UP"         />      <!--key up-->
+        <key value="0xe9161420" name="KEY_DOWN"       />      <!--key down-->
+        <key value="0xea151420" name="KEY_RIGHT"      />      <!--key right-->
+        <key value="0xb8471420" name="KEY_LEFT"       />      <!--key left -->
+        <key value="0xaa551420" name="KEY_ENTER"      />      <!--key ok -->
+        <key value="0xbf401420" name="KEY_BACK"       />      <!--Back -->
+        <key value="0xfb041420" name="KEY_MENU"       />      <!-- -->
+        <key value="0xe7181420" name="KEY_POWER"      />      <!-- -->
+        <key value="0xb14e1420" name="KEY_HOME"       />      <!-- -->
+        <key value="0xeb141420" name="KEY_VOLUMEUP"   />      <!-- -->
+        <key value="0xef101420" name="KEY_VOLUMEDOWN" />      <!-- -->
+        <key value="0xa45b1420" name="KEY_MUTE"       />      <!-- -->
+        <key value="0xf00f1420" name="KEY_1"          />      <!-- -->
+        <key value="0xee111420" name="KEY_2"          />      <!-- -->
+        <key value="0xed121420" name="KEY_3"          />      <!-- -->
+        <key value="0xb34c1420" name="KEY_4"          />      <!-- -->
+        <key value="0xa7581420" name="KEY_5"          />      <!-- -->
+        <key value="0xe41b1420" name="KEY_6"          />      <!-- -->
+        <key value="0xe8171420" name="KEY_7"          />      <!-- -->
+        <key value="0xb24d1420" name="KEY_8"          />      <!-- -->
+        <key value="0xf50a1420" name="KEY_9"          />      <!-- -->
+        <key value="0xe21d1420" name="KEY_0"          />      <!-- -->
+	<key value="0xe31c1420" name="KEY_F11"  />      <!-- -->
+	<key value="0xaf501420" name="KEY_CHANNELUP"   />      <!-- -->
+	<key value="0xad521420" name="KEY_CHANNELDOWN"     />      <!-- -->
+        <key value="0xe11e1420" name="KEY_BACKSPACE"  />      <!-- -->
+	<key value="0xb04f1420" name="KEY_SETUP"     />      <!-- -->
+	<key value="0x32cd1420" name="KEY_TV"         />      <!-- -->
+	<key value="0x6e911420" name="KEY_MOVIE"      />      <!-- -->
+	<key value="0x7c831420" name="KEY_APPS"       />      <!-- -->
+	<key value="0x3cc31420" name="KEY_FAVOURITE"  />      <!-- -->
+	<key value="0x9e611420" name="KEY_PAGEUP"       />      <!-- -->
+	<key value="0x9d621420" name="KEY_PAGEDOWN"       />      <!-- -->
+    </other2-key>
+    
+    <other3-key>
+	<key value="0x728d4cb3" name="KEY_SETUP"         />      <!--key up-->
+	<key value="0x23dc4cb3" name="KEY_POWER"         />      <!-- -->
+	<key value="0x639c4cb3" name="KEY_MUTE"       />      <!-- -->
+	<key value="0x35ca4cb3" name="KEY_UP"         />      <!--key up-->
+        <key value="0x2dd24cb3" name="KEY_DOWN"       />      <!--key down-->
+        <key value="0x3ec14cb3" name="KEY_RIGHT"      />      <!--key right-->
+        <key value="0x66994cb3" name="KEY_LEFT"       />      <!--key left -->
+        <key value="0x31ce4cb3" name="KEY_ENTER"      />      <!--key ok -->
+        <key value="0x3ac54cb3" name="KEY_BACK"       />      <!--Back -->
+        <key value="0x7d824cb3" name="KEY_MENU"       />      <!-- -->
+        <key value="0x77884cb3" name="KEY_HOME"       />      <!-- -->
+        <key value="0x7f804cb3" name="KEY_VOLUMEUP"   />      <!-- -->
+        <key value="0x7e814cb3" name="KEY_VOLUMEDOWN" />      <!-- -->
+	<key value="0x7a854cb3" name="KEY_CHANNELUP"   />      <!-- -->
+        <key value="0x79864cb3" name="KEY_CHANNELDOWN"     />      <!-- -->
+    </other3-key>
+
+    <other4-key>
+	<key value="0xfd023412" name="KEY_ENTER"      />      <!--key ok -->
+	<key value="0xb24d3412" name="KEY_BACK"       />      <!--Back -->
+	<key value="0xbc433412" name="KEY_UP"         />      <!--key up-->
+	<key value="0xf10e3412" name="KEY_RIGHT"      />      <!--key right-->
+	<key value="0xf9063412" name="KEY_LEFT"       />      <!--key left -->
+	<key value="0xf50a3412" name="KEY_DOWN"       />      <!--key down-->
+	<key value="0x03fc3412" name="KEY_TV_OPEN"       />      
+	<key value="0x08f73412" name="KEY_SOS_OPEN"       />      
+	<key value="0x04fb3412" name="KEY_SUOI_OPEN"       />      
+	<key value="0x0ef13412" name="KEY_ALBUM_OPEN"       />     
+	<key value="0x0df23412" name="KEY_CHAT_OPEN"       />      
+	<key value="0x0cf33412" name="KEY_FRIEND_OPEN"       />      
+	<key value="0x0bf43412" name="KEY_HEALTH_OPEN"       />      
+	<key value="0x0af53412" name="KEY_CHILD_OPEN"       />      
+	<key value="0x09f63412" name="KEY_MALL_OPEN"       />      
+	<key value="0x07f83412" name="KEY_ENT_OPEN"       />      
+	<key value="0x05fa3412" name="KEY_EXPERT_OPEN"       />      
+	<key value="0x06f93412" name="KEY_WEATHER_OPEN"       />      
+	<key value="0xe51a3412" name="KEY_NOTICE_OPEN"       />
+	<key value="0xb14e3412" name="KEY_HP_OPEN"       />
+	</other4-key>
+	
+	
+    <other-key>
+	<key value="0xb946ff00" name="KEY_UP"         />      <!--key up-->
+        <key value="0xe916ff00" name="KEY_DOWN"       />      <!--key down-->
+        <key value="0xea15ff00" name="KEY_RIGHT"      />      <!--key right-->
+        <key value="0xb847ff00" name="KEY_LEFT"       />      <!--key left -->
+        <key value="0xaa55ff00" name="KEY_ENTER"      />      <!--key ok -->
+        <key value="0xbf40ff00" name="KEY_BACK"       />      <!--Back -->
+        <key value="0xfb04ff00" name="KEY_MENU"       />      <!-- -->
+        <key value="0xe718ff00" name="KEY_POWER"      />      <!-- -->
+	<key value="0xa857ff00" name="KEY_POWER"      />
+        <key value="0xb14eff00" name="KEY_HOME"       />      <!-- -->
+        <key value="0xeb14ff00" name="KEY_VOLUMEUP"   />      <!-- -->
+        <key value="0xef10ff00" name="KEY_VOLUMEDOWN" />      <!-- -->
+        <key value="0xa45bff00" name="KEY_MUTE"       />      <!-- -->
+        <key value="0xf00fff00" name="KEY_1"          />      <!-- -->
+        <key value="0xee11ff00" name="KEY_2"          />      <!-- -->
+        <key value="0xed12ff00" name="KEY_3"          />      <!-- -->
+        <key value="0xb34cff00" name="KEY_4"          />      <!-- -->
+        <key value="0xa758ff00" name="KEY_5"          />      <!-- -->
+        <key value="0xe41bff00" name="KEY_6"          />      <!-- -->
+        <key value="0xe817ff00" name="KEY_7"          />      <!-- -->
+        <key value="0xb24dff00" name="KEY_8"          />      <!-- -->
+        <key value="0xf50aff00" name="KEY_9"          />      <!-- -->
+        <key value="0xe21dff00" name="KEY_0"          />      <!-- -->
+	<key value="0xe31cff00" name="KEY_F11"  />      <!-- -->
+	<key value="0xaf50ff00" name="KEY_CHANNELUP"   />      <!-- -->
+	<key value="0xad52ff00" name="KEY_CHANNELDOWN"     />      <!-- -->
+        <key value="0xe11eff00" name="KEY_BACKSPACE"  />      <!-- -->
+	<key value="0xb04fff00" name="KEY_SETUP"     />      <!-- -->
+	<key value="0x32cdff00" name="KEY_TV"         />      <!-- -->
+	<key value="0x6e91ff00" name="KEY_MOVIE"      />      <!-- -->
+	<key value="0x7c83ff00" name="KEY_APPS"       />      <!-- -->
+	<key value="0x3cc3ff00" name="KEY_FAVOURITE"  />      <!-- -->
+	<!--<key value="0x9768ff00" name="KEY_CHILD_POWER"  />     --> <!-- -->
+        <key value="0x9768ff00" name="KEY_POWER"  />
+        <key value="0x9e61ff00" name="KEY_PAGEUP"       />      <!-- -->
+	<key value="0x9d62ff00" name="KEY_PAGEDOWN"       />      <!-- -->
+        </other-key>
+    
+</key_xml>
+

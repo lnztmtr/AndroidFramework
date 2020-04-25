@@ -1,0 +1,29 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: SHCMCC_Upgrade_usb_signed.apk
+compressionType: false
+doNotCompress:
+- arsc
+- res/drawable-hdpi/background_dialog_scale.9.png
+- png
+- res/drawable/seekbar_bg.9.png
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '15'
+sharedLibrary: false
+sparseResources: true
+unknownFiles:
+  dlblog.properties: '8'
+  log.properties: '8'
+  com/duolebo/tools/dlblog.properties: '8'
+  net/sunniwell/common/log/log.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.4.0
+versionInfo:
+  versionCode: '17041501'
+  versionName: 17.04.15.01

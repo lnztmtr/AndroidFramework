@@ -1,0 +1,157 @@
+Problem:
+Rtp playback time is too slow
+
+Solution:
+1、don't wait sps/pps when rtp
+2、don't use systewrite sysetem read， just read open write
+3、don't left frame in ringbuffer when first frame not coming
+
+ amffmpeg/libavformat/rtsp.c           |  2 +-
+ amffmpeg/libavformat/utils.c          | 18 ++++++++++++++++++
+ amplayer/player/player.c              |  5 ++++-
+ amplayer/player/player_ffmpeg_cache.c |  4 +++-
+ amplayer/player/player_update.c       | 18 ++++++++++++++----
+ 6 files changed, 42 insertions(+), 9 deletions(-)
+
+diff --git a/amffmpeg/libavformat/rtsp.c b/amffmpeg/libavformat/rtsp.c
+index a14945f..1e9eb63 100755
+--- a/amffmpeg/libavformat/rtsp.c
++++ b/amffmpeg/libavformat/rtsp.c
+@@ -1968,7 +1968,7 @@ static int rtp_probe(AVProbeData *p)
+         return AVPROBE_SCORE_MAX;
+     return 0;
+ #endif
+-    if(am_getconfig_int_def("media.player.nortpprobe", 0)){
++    if(am_getconfig_int_def("media.player.nortpprobe", 1)){
+         return 0;
+     }
+  
+diff --git a/amffmpeg/libavformat/utils.c b/amffmpeg/libavformat/utils.c
+index cb71c8a..871190b 100755
+--- a/amffmpeg/libavformat/utils.c
++++ b/amffmpeg/libavformat/utils.c
+@@ -1302,6 +1302,7 @@ retry_open:
+     }
+     s->duration = s->start_time = AV_NOPTS_VALUE;
+     av_strlcpy(s->filename, filename, sizeof(s->filename));
++    av_log(NULL, AV_LOG_INFO, "avformat_open_input_header ic:%p filename :%s\n",s,s->filename);
+     if (headers) {
+         s->headers = strdup(headers);
+     }
+@@ -4287,6 +4288,7 @@ int av_find_stream_info(AVFormatContext *ic)
+     av_log(NULL, AV_LOG_INFO, "retry_number = %d\n",retry_number);
+     av_log(NULL, AV_LOG_INFO, "[%s]iformat->name[%s]fast_switch=%d streamtype=%lld\n", \
+            __FUNCTION__, ic->iformat->name, fast_switch, streamtype);
++    av_log(NULL, AV_LOG_INFO, "ic:%p filename :%s\n",ic,ic->filename);
+     /* make all the stream  valid at the beginning*/
+     for (i = 0; i < ic->nb_streams; i++)
+     {
+@@ -4496,6 +4498,22 @@ int av_find_stream_info(AVFormatContext *ic)
+                 break;
+             }
+         }
++        if(!strcmp(ic->iformat->name, "rtp") ||
++            (strstr(ic->filename,"rtp://") != NULL)) {
++             int gotaudio = 0,gotvideo = 0;
++            for(k = 0; k < ic->nb_streams; k++)
++            {
++                st = ic->streams[k];
++                if(st->codec->codec_type == AVMEDIA_TYPE_AUDIO&&st->codec_info_nb_frames > 0)
++                    gotaudio = 1;
++                if(st->codec->codec_type == AVMEDIA_TYPE_VIDEO&&st->codec_info_nb_frames > 0)
++                    gotvideo = 1;
++            }
++            if (gotaudio && gotvideo) {
++                av_log(ic, AV_LOG_ERROR, "rtp format, find audio and video,read %d ok",read_size);
++                break;
++            }
++        }
+         /* we did not get all the codec info, but we read too much data */
+         if (read_size >= ic->probesize)
+         {
+diff --git a/amplayer/player/player.c b/amplayer/player/player.c
+index 1f86b42..33dd9f3 100755
+--- a/amplayer/player/player.c
++++ b/amplayer/player/player.c
+@@ -2761,10 +2761,13 @@ write_packet:
+                 if ((player->pFormatCtx->flags & AVFMT_FLAG_NETWORK_VOD)||
+                     (player->buffering_enable && player->pFormatCtx->pb && player->pFormatCtx->pb->local_playback == 0&&player->start_param->buffing_force_delay_s > 0)) {
+                     player->buffering_force_delay_s  = am_getconfig_float_def("media.amplayer.delaybuffering", 2);
++                    player->buffering_check_point = 0;
+                     log_print("set force delay buffering %f\n", player->buffering_force_delay_s);
+                 }
+-                if(av_is_segment_media(player->pFormatCtx))
++                if(av_is_segment_media(player->pFormatCtx)){
+                     player->buffering_force_delay_s  = am_getconfig_float_def("media.amplayer.delaybuffering", 2);
++                    player->buffering_check_point = 0;
++                }
+                 force_buffering_enter(player);
+                 player->play_last_reset_systemtime_us = player_get_systemtime_ms();
+                 if (player->playctrl_info.f_step == 0) {
+
+diff --git a/amplayer/player/player_ffmpeg_cache.c b/amplayer/player/player_ffmpeg_cache.c
+index 003f127..350f677 100755
+--- a/amplayer/player/player_ffmpeg_cache.c
++++ b/amplayer/player/player_ffmpeg_cache.c
+@@ -2826,9 +2826,11 @@ static int avpkt_cache_check_frames_reseved_enough(av_packet_cache_t *cache_ptr)
+ 	int64_t keepframe_ms = 0;
+ 	int64_t queue_left_ms = 0;
+ 	float pts_to_msec = 0.0;
++    
++        int frame_toggled = get_sysfs_int("/sys/module/amvideo/parameters/first_frame_toggled");
+ 
+ 	frame_dur_pts = (int)(cache_ptr->queue_video.bak_cache_pts/cache_ptr->queue_video.frames_in);
+-	if (frame_dur_pts > 0) {
++	if (frame_dur_pts > 0 && frame_toggled) {
+ 		pts_to_msec = cache_ptr->queue_video.timebase * 1000;
+ 
+ 		current_ms = (int64_t)(player->state.current_ms);
+diff --git a/amplayer/player/player_update.c b/amplayer/player/player_update.c
+index e9bf47a..e93cf9a 100755
+--- a/amplayer/player/player_update.c
++++ b/amplayer/player/player_update.c
+@@ -1064,9 +1064,12 @@ static void update_dec_info(play_para_t *p_para,
+     int update = 0;
+     mvideo_info_t *video_info = NULL;
+     if (p_para->vstream_info.has_video && (vdec->status == 0x3F)) { //video dec is ready
+-        if (p_para->vstream_info.video_width == 0) {
++        int first_pic = get_sysfs_int("/sys/module/amvideo/parameters/first_frame_toggled");
++        if (p_para->vstream_info.video_width <= 16 && first_pic) {
+             p_para->vstream_info.video_width = vdec->width;
+             p_para->vstream_info.video_height = vdec->height;
++            update = 1;
++            log_print("first pic coming,width:%d,height:%d\n", p_para->vstream_info.video_width, p_para->vstream_info.video_height);
+         } else if (((p_para->vstream_info.video_width != vdec->width) || (p_para->vstream_info.video_height != vdec->height)) && vdec->width > 0 && vdec->width <= 3840 && vdec->height > 0 && vdec->height <= 2160) {
+             //some size changed info,temporary changed size ,don't the info;
+             //p_para->vstream_info.video_width = vdec->width;
+@@ -1103,6 +1106,12 @@ static void update_dec_info(play_para_t *p_para,
+                     if (p_para->media_info.video_info[i]->index == p_para->vstream_info.video_index) {
+                         p_para->media_info.video_info[i]->frame_rate_num = (UNIT_FREQ);
+                         p_para->media_info.video_info[i]->frame_rate_den = (UNIT_FREQ)/kernel_fps;
++                        p_para->media_info.video_info[i]->height = p_para->vstream_info.video_height;
++                        p_para->media_info.video_info[i]->width = p_para->vstream_info.video_width;
++                        log_print("update width:%d,height:%d, num:%d,den:%d\n", p_para->media_info.video_info[i]->width,
++                            p_para->media_info.video_info[i]->width,
++                            p_para->media_info.video_info[i]->frame_rate_num,
++                            p_para->media_info.video_info[i]->frame_rate_den);
+                     }
+                 }
+             }
+@@ -2363,10 +2372,11 @@ int update_playing_info(play_para_t *p_para)
+         player_check_program_change(p_para);
+ 
+         update_av_sync_for_audio(p_para);
+-
++        
+         if (p_para->first_pcr == 0) {
+-            int pcr = get_sysfs_int("/sys/class/tsync/pts_pcrscr");
+-            if (pcr > 0) {
++            int first_pic = get_sysfs_int("/sys/module/amvideo/parameters/first_frame_toggled");
++            if (first_pic == 1) {
++                int pcr = get_sysfs_int("/sys/class/tsync/pts_pcrscr");
+                 send_event(p_para, PLAYER_EVENTS_GET_FIRST_PCR, pcr, 0);
+                 p_para->first_pcr = pcr;
+                 log_print("send_event: get_first_pcr 0x%x\n", pcr);
+-- 
+2.7.4
+

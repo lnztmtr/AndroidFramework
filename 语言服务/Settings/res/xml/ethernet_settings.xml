@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/eth_setting">
+        <!-- Programmatically will have dynamic summary, but we provide the fallback summary. -->
+        <PreferenceCategory
+            android:key="ipv4_setting"
+            android:title="@string/eth_conf_perf_title"/>
+        <SwitchPreference
+            android:key="ipv4_swtich"
+            android:summaryOn="@string/ethernet_status_on"
+            android:summaryOff="@string/ethernet_status_off"
+            android:title="@string/eth_conf_status_title"/>
+        <Preference
+            android:title="@string/eth_conf_perf_title"
+            android:summary="@string/eth_conf_summary"
+            android:key="ETHERNET_config"
+            android:persistent="false" />
+        <PreferenceCategory
+            android:key="ipv6_setting"
+            android:title="@string/ipv6_perf_title"/>
+        <SwitchPreference
+            android:key="ipv6_switch"
+            android:summaryOn="@string/ethernet_status_on"
+            android:summaryOff="@string/ethernet_status_off"
+            android:title="@string/ipv6_conf_status_title"/>
+        <Preference
+            android:title="@string/ipv6_perf_title"
+            android:summary="@string/ipv6_summary"
+            android:key="IPV6_config"
+            android:persistent="false" />
+        </PreferenceScreen>

@@ -1,0 +1,61 @@
+From 1dc524b7704f9bce8a2d673d8af30586c4aa7769 Mon Sep 17 00:00:00 2001
+From: Xy Ding <xy.ding@amlogic.com>
+Date: Mon, 3 Jun 2019 18:53:44 +0800
+Subject: [PATCH] LibPlayer: set ubootenv.var.screenmode default to full. [1/1]
+
+PD#IPTV-1583
+
+Problem:
+There are black edges on the left
+and right sides of the full-screen play
+
+Solution:
+set ubootenv.var.screenmode prop default value to full
+
+Verify:
+905L3
+
+Change-Id: I1fd0183a655702442cd4aa4cdc14b29d5bde987e
+Signed-off-by: Xy Ding <xy.ding@amlogic.com>
+---
+ amavutils/Amvideoutils.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/amavutils/Amvideoutils.c b/amavutils/Amvideoutils.c
+index 2d8291f..ac1c432 100644
+--- a/amavutils/Amvideoutils.c
++++ b/amavutils/Amvideoutils.c
+@@ -416,21 +416,21 @@ void amvideo_setscreenmode()
+ void amvideo_iptv_setscreenmode(int video_width, int video_height) {
+     char value[PROPERTY_VALUE_MAX];
+ 
+-    if (video_width < 160 || video_height < 90){   
++    if (video_width < 160 || video_height < 90) {
+         amvideo_utils_set_screen_mode(1);
+-    }else {
+-        if(property_get("ubootenv.var.screenmode", value, NULL) > 0){
+-            if(!strcmp(value,"full"))
++    } else {
++        if (property_get("ubootenv.var.screenmode", value, "full") > 0) {
++            if (!strcmp(value,"full"))
+                 amvideo_utils_set_screen_mode(1);
+-            else if(!strcmp(value,"normal"))
++            else if(!strcmp(value,"normal"))
+                 amvideo_utils_set_screen_mode(0);
+-            else if(!strcmp(value,"4_3"))
++            else if(!strcmp(value,"4_3"))
+                 amvideo_utils_set_screen_mode(2);
+-            else if(!strcmp(value,"16_9"))
++            else if(!strcmp(value,"16_9"))
+                 amvideo_utils_set_screen_mode(3);
+-            else if(!strcmp(value,"4_3 letter box"))
++            else if(!strcmp(value,"4_3 letter box"))
+                 amvideo_utils_set_screen_mode(7);
+-            else if(!strcmp(value,"16_9 letter box"))
++            else if(!strcmp(value,"16_9 letter box"))
+                 amvideo_utils_set_screen_mode(11);
+             else
+                 amvideo_utils_set_screen_mode(1);
+-- 
+2.10.2
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">U盘升级</string>
+    <string name="savepath">/cache/update/</string>
+    <string name="title">U盤升級提示</string>
+    <string name="okLabel">確定</string>
+    <string name="cancelLabel">取消</string>
+    <string name="ts1">發現升級文件,開始啟動升級</string>
+    <string name="ts2">升級文件未發現版本信息</string>
+    <string name="ts3">正在檢查版本</string>
+    <string name="ts4">設備類型錯誤</string>
+    <string name="ts5">升級文件版本錯誤</string>
+    <string name="ts6">版本相同不需要升級</string>
+    <string name="ts7">開始拷貝文件</string>
+    <string name="ts8">升級請點擊確定，返回請點擊取消?</string>
+    <string name="ts9">升級失敗</string>
+    <string name="copy">正在復制文件(請勿移除usb設備！)</string>
+    <string name="ts10">是否重啟升級？(升級過程請勿拔除usb設備!)</string>
+    <string name="ts11">文件拷貝未完成...</string>
+    <string name="usbUp">U盤升級</string>
+    <string name="nowpost">當前版本號:</string>
+    <string name="postbuild">可升級版本:\u0009</string>
+    <string name="reboot">提示:當下次重啟設備時，將升級為選定版本.</string>
+    <string name="titlefirst">提示：點擊確定鍵，進行升級。點擊返回鍵，退出升級。</string>
+    <string name="version">當前版本為:</string>
+    <string name="isUp">,是否升級到：</string>
+    <string name="ask">\?</string>
+    <string name="ziperror">升級文件版本不正確，請檢查升級包！</string>
+    <string name="nozipfile">upgrade目錄下沒有發現升級包，請檢查！</string>
+    <string name="versionsame">升級包版本與機頂盒版本相同，無需升級！</string>
+    <string name="hardsame">硬件類型不壹致，請檢查升級包是否正確！</string>
+</resources>

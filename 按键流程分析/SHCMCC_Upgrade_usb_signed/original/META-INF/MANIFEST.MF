@@ -1,0 +1,105 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: res/drawable/b11.png
+SHA1-Digest: BkByxvXut+edaUdDuJMjyahav1E=
+
+Name: res/drawable/pro.png
+SHA1-Digest: I1REU/Da7MU2UFDLDe8LdCnPkdw=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 9foHTTQsgZqi6XIRgV2m4A7tQfU=
+
+Name: res/layout/one.xml
+SHA1-Digest: wMs/2yj6PPTMSnrTXRxHTAlDZKk=
+
+Name: res/drawable/seekbar_bg.9.png
+SHA1-Digest: hc6YOEszW/Go1EWYvDqabUCu72g=
+
+Name: res/drawable/upgrade_progress_horizontal.xml
+SHA1-Digest: Z2E4mDpdjZDnHQSBDvsSHho5pGI=
+
+Name: com/duolebo/tools/dlblog.properties
+SHA1-Digest: l/T/CeRjxJA+3NO68TqMIFxz+Js=
+
+Name: res/drawable/select_image.xml
+SHA1-Digest: HPlhpye5lcDBunbjIqxBIeYaBzU=
+
+Name: res/layout/dialog_download.xml
+SHA1-Digest: XYF6JTHPToXA1pf0T+ZNq/BGh0s=
+
+Name: res/layout-w1900dp/dialog_download.xml
+SHA1-Digest: TNQwwKhc9RhMExNcN2MC3Mze60k=
+
+Name: dlblog.properties
+SHA1-Digest: QHdNgHzu5KP/rpew1qM95TchpPo=
+
+Name: res/drawable/b.png
+SHA1-Digest: jHo/ktKicMVUbjBdkKzg7E8JZIk=
+
+Name: res/drawable-hdpi/background_dialog_scale.9.png
+SHA1-Digest: bqBDOCSSac8lcn7b/T1MBH+MKvI=
+
+Name: res/drawable/play_press.png
+SHA1-Digest: n5/CbWbzRLG3/wcVXqgoTwWmATU=
+
+Name: res/drawable-hdpi/ic_launcher.png
+SHA1-Digest: RQ09RDJf3yWYEKYOavo2ED4Yaz0=
+
+Name: res/drawable/a.png
+SHA1-Digest: 7K/56P+aFvItvTFQ3FhJOOwMxN4=
+
+Name: res/drawable/button.xml
+SHA1-Digest: oabvqxdN/QKjvII5KgozwbP0hj8=
+
+Name: log.properties
+SHA1-Digest: xk9yIb7plbhH1JgGPaQHhfbAgCY=
+
+Name: res/drawable-ldpi/ic_launcher.png
+SHA1-Digest: CepliFtAgOUV73Bk6BbHeZHAdXs=
+
+Name: res/drawable-mdpi/ic_launcher.png
+SHA1-Digest: I3MP0NXnINH3Gb4a/IxI+nMF2mw=
+
+Name: res/layout-w1900dp/main.xml
+SHA1-Digest: S2KNMSf4TLnPPjgiYfUgpSggZpM=
+
+Name: res/layout/main.xml
+SHA1-Digest: DHrwyWRw7l7VBiesmqlpJBP4P9Y=
+
+Name: res/layout-w1900dp/list_items.xml
+SHA1-Digest: erC7gMQFcPNZg0ExP/M8nOWKWno=
+
+Name: res/layout/list_items.xml
+SHA1-Digest: r9SrfIq68IKulUtad0tuiVVvGMA=
+
+Name: res/drawable-xhdpi/ic_launcher.png
+SHA1-Digest: UCzYT6RE8m1+z99KNVBkhnl38jY=
+
+Name: res/drawable/dialogbackground.png
+SHA1-Digest: 14giaBg+z167mE80KJ8/oyd/PNE=
+
+Name: res/drawable/b12.png
+SHA1-Digest: rjJkcN37LnycfD9d0ZJkUIXxATI=
+
+Name: res/layout-w1900dp/one.xml
+SHA1-Digest: LLra3aN3jCJJbkARm3WceUtSIM0=
+
+Name: res/drawable/listview_selector.xml
+SHA1-Digest: n+uq7MRO5+1qIvyFqJ90FMowICY=
+
+Name: resources.arsc
+SHA1-Digest: +XWE9tPSgmqCVcvH/Tf87w+qrCw=
+
+Name: res/drawable/play.png
+SHA1-Digest: 7beDYYiA00a45uOEsnoXOoYV/fo=
+
+Name: classes.dex
+SHA1-Digest: OAx6Fl04EcHtmehNHTq39pxrbFU=
+
+Name: res/drawable/backg.png
+SHA1-Digest: WXxf77D3SzSsznkxvD0/oo1Wpmw=
+
+Name: net/sunniwell/common/log/log.properties
+SHA1-Digest: B9vvl2l6NywUBxSdRobkkNtMgSQ=
+

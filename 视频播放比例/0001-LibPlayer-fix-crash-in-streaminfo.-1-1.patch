@@ -1,0 +1,61 @@
+From e8acefe90308bb18f2ae0d9f5310b14f3546913d Mon Sep 17 00:00:00 2001
+From: Chuanqi Wang <chuanqi.wang@amlogic.com>
+Date: Sat, 26 Oct 2019 15:03:34 +0800
+Subject: [PATCH] LibPlayer: fix crash in streaminfo. [1/1]
+
+PD#IPTV-4950
+
+Problem:
+amlogicplayer use mediainfo after libplayer has freed it
+
+Solution:
+amlogicplayer use the memory of themself instead of libplayer
+
+Verify:
+verified on S905L3
+
+Change-Id: Iaf5b5df7b448a4cb4996f66fdd6d52f9ff67db94
+Signed-off-by: Chuanqi Wang <chuanqi.wang@amlogic.com>
+---
+ amplayer/player/player_ctrl.c | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/amplayer/player/player_ctrl.c b/amplayer/player/player_ctrl.c
+index d7f60c7..0fe5454 100644
+--- a/amplayer/player/player_ctrl.c
++++ b/amplayer/player/player_ctrl.c
+@@ -1124,10 +1124,27 @@ int player_get_media_info(int pid, media_info_t *minfo)
+     if (player_para == NULL) {
+         return PLAYER_NOT_VALID_PID;    /*this data is 0 for default!*/
+     }
+-
+-    MEMSET(minfo, 0, sizeof(media_info_t));
+-    MEMCPY(minfo, &player_para->media_info, sizeof(media_info_t));
+-
++    if (player_para->media_info.video_info[0] == NULL&&
++            player_para->media_info.audio_info[0] == NULL) {
++        log_error("player_get_media_info failed para has release\n");
++        player_close_pid_data(pid);
++        return PLAYER_FAILED;
++    }
++    MEMCPY(&minfo->report_para, &player_para->media_info.report_para, sizeof(player_para_report_t));
++    MEMCPY(&minfo->stream_info, &player_para->media_info.stream_info, sizeof(mstream_info_t));
++    MEMCPY(&minfo->ts_programe_info, &player_para->media_info.ts_programe_info, sizeof(ts_programe_info_t));
++    for (i=0; i<MAX_VIDEO_STREAMS; i++) {
++        if (player_para->media_info.video_info[i])
++            MEMCPY(minfo->video_info[i], player_para->media_info.video_info[i], sizeof(mvideo_info_t));
++    }
++    for (i=0; i<MAX_AUDIO_STREAMS; i++) {
++        if (player_para->media_info.audio_info[i])
++            MEMCPY(minfo->audio_info[i], player_para->media_info.audio_info[i], sizeof(maudio_info_t));
++    }
++    for (i=0; i<MAX_SUB_STREAMS; i++) {
++        if (player_para->media_info.sub_info[i])
++            MEMCPY(minfo->sub_info[i], player_para->media_info.sub_info[i], sizeof(msub_info_t));
++    }
+     log_print("[player_get_media_info]video_num=%d vidx=%d\n", minfo->stream_info.total_video_num, minfo->stream_info.cur_video_index);
+ 
+     /* +[SE] [BUG][IPTV-819][yinli.xia] added: add fcc function can not get frameinfo*/
+-- 
+2.10.2
+
