@@ -61,6 +61,10 @@ final class ServiceConnectionLeaked extends AndroidRuntimeException {
     public ServiceConnectionLeaked(String msg) {
         super(msg);
     }
+    public ServiceConnectionLeaked(String msg) {
+        super(msg);
+    }
+    }
 }
 
 /**
@@ -81,7 +85,6 @@ public final class LoadedApk {
     private final String mLibDir;
     private final File mDataDirFile;
     private final ClassLoader mBaseClassLoader;
-    private final boolean mSecurityViolation;
     private final boolean mIncludeCode;
     private final DisplayAdjustments mDisplayAdjustments = new DisplayAdjustments();
     Resources mResources;
