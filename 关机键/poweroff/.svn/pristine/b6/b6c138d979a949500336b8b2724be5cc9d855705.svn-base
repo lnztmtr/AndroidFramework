@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/poweroff_button_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="#e8000000"
+        android:gravity="center" >
+        
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/poweroff"
+                style="@style/mybutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_margin"
+                android:layout_marginRight="@dimen/iv_margin"
+                android:layout_marginBottom="@dimen/iv_margin_botton"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:src="@drawable/poweroff_selector" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/poweroff"
+                android:textColor="@android:color/background_light"
+                android:textSize="@dimen/tv_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/standby"
+                style="@style/mybutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_margin"
+                android:layout_marginRight="@dimen/iv_margin"
+                android:layout_marginBottom="@dimen/iv_margin_botton"
+                android:src="@drawable/standby_selector" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/standby"
+                android:textColor="@android:color/background_light"
+                android:textSize="@dimen/tv_textsize" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/reboot"
+                style="@style/mybutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/reboot_selector" 
+                android:layout_marginLeft="@dimen/iv_margin"
+                android:layout_marginRight="@dimen/iv_margin"
+                android:layout_marginBottom="@dimen/iv_margin_botton"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/reboot"
+                android:textColor="@android:color/background_light"
+                android:textSize="@dimen/tv_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/cancel"
+                style="@style/mybutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_margin"
+                android:layout_marginRight="@dimen/iv_margin"
+                android:layout_marginBottom="@dimen/iv_margin_botton"
+                android:src="@drawable/cancel_selector" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@android:color/background_light"
+                android:textSize="@dimen/tv_textsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/poweroff_ing_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dialog_height"
+        android:layout_centerInParent="true"
+        android:background="#cc000000"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/shutdown_ing"
+            android:textSize="34sp" />
+    </LinearLayout>
+
+</RelativeLayout>

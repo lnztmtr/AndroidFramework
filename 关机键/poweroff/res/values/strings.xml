@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">poweroff</string>
+    <string name="standby">待机</string>
+    <string name="poweroff">关机</string>
+    <string name="reboot">重启</string>
+    <string name="cancel">取消</string>
+    <string name="shutdown_ing">正在关机...</string>
+
+</resources>

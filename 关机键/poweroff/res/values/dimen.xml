@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dialog_height">409px</dimen>
+    
+    <dimen name="iv_margin">76px</dimen>
+    
+    <dimen name="iv_margin_botton">36dp</dimen>
+    
+    <dimen name="tv_textsize">39sp</dimen>
+    
+    
+    
+
+</resources>

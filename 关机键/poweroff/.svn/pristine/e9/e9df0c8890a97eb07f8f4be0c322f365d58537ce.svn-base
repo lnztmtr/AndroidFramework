@@ -1,0 +1,192 @@
+package com.ysten.poweroff;
+
+import android.app.AlertDialog;
+import android.app.Service;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.PowerManager;
+import android.os.SystemClock;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class YstPowerOffService extends Service {
+
+	private static final String TAG = "YstPowerOffService";
+	private PowerManager mPowerManager;
+	private PoweroffDialog dialog;
+	private int HomeKeyStatus = 0;
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		Log.d(TAG, "onCreate");
+	}
+
+	@Override
+	@Deprecated
+	public void onStart(Intent intent, int startId) {
+		// TODO Auto-generated method stub
+		super.onStart(intent, startId);
+		Log.d(TAG, "onStart");
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onDestroy");
+		super.onDestroy();
+	}
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onStartCommand");
+		//modify by zws ,fix killed restart
+		showPoweroffDialog();
+		return START_NOT_STICKY;
+	}
+
+	private void showPoweroffDialog() {
+		Log.d(TAG, "....showPoweroffDialog.......");
+		HomeKeyStatus = Settings.System.getInt(this.getContentResolver(),
+				"IS_RESPOND_HOME_KEY", 0);
+		Log.d(TAG, "0000HomeKeyStatus="+HomeKeyStatus);
+		Settings.System.putInt(this.getContentResolver(),
+				"IS_RESPOND_HOME_KEY", 1);
+		Settings.System.putInt(this.getContentResolver(),
+				"IS_RESPOND_MENU_KEY", 1);
+		Settings.System.putInt(this.getContentResolver(),
+				"IS_RESPOND_SETTING_KEY", 1);
+		if (dialog == null)
+			dialog = new PoweroffDialog(this, R.style.dialog);
+		dialog.getWindow()
+				.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+		Log.d(TAG,
+				"....showPoweroffDialog...dialog.isShowing()..."
+						+ dialog.isShowing());
+		if (!dialog.isShowing())
+			dialog.show();
+
+		dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+			@Override
+			public void onDismiss(DialogInterface arg0) {
+				// TODO Auto-generated method stub
+				Log.d(TAG, "onDismiss");
+				Log.d(TAG, "HomeKeyStatus="+HomeKeyStatus);
+				Settings.System.putInt(getContentResolver(),
+						"IS_RESPOND_HOME_KEY", HomeKeyStatus);
+				Settings.System.putInt(getContentResolver(),
+						"IS_RESPOND_MENU_KEY", 0);
+				Settings.System.putInt(getContentResolver(),
+						"IS_RESPOND_SETTING_KEY", 0);
+
+			}
+		});
+
+		/* set size & pos */
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		lp.width = (int) (display.getWidth() * 1.0);
+		lp.height = (int) (display.getHeight() * 1.0);
+		dialog.getWindow().setAttributes(lp);
+
+	}
+
+	public class PoweroffDialog extends AlertDialog implements
+			android.view.View.OnClickListener {
+
+		private ImageView mBtnStandby;
+		private ImageView mBtnPoweroff;
+		private ImageView mBtnReboot;
+		private ImageView mBtnCancel;
+		private LinearLayout mBtnLayout;
+		private LinearLayout mPoweroffIngLayout;
+
+		public PoweroffDialog(Context context, int theme) {
+			super(context, theme);
+
+		}
+
+		public PoweroffDialog(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.poweroff_dialog);
+			mBtnLayout = (LinearLayout) findViewById(R.id.poweroff_button_layout);
+			mPoweroffIngLayout = (LinearLayout) findViewById(R.id.poweroff_ing_layout);
+			mBtnStandby = (ImageView) findViewById(R.id.standby);
+			mBtnPoweroff = (ImageView) findViewById(R.id.poweroff);
+			mBtnReboot = (ImageView) findViewById(R.id.reboot);
+			mBtnCancel = (ImageView) findViewById(R.id.cancel);
+			mBtnStandby.setOnClickListener(this);
+			mBtnPoweroff.setOnClickListener(this);
+			mBtnReboot.setOnClickListener(this);
+			mBtnCancel.setOnClickListener(this);
+			mBtnPoweroff.requestFocus();
+		}
+
+		// hide button.show poweroff ing text
+		public void showPoweroffText() {
+			mBtnLayout.setVisibility(View.GONE);
+			mPoweroffIngLayout.setVisibility(View.VISIBLE);
+		}
+
+		@Override
+		public void onClick(View view) {
+			Log.d(TAG, "view.getId(-->>" + view.getId());
+			switch (view.getId()) {
+			case R.id.standby:
+				dismiss();
+				mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+				mPowerManager.goToSleep(SystemClock.uptimeMillis());
+				break;
+			case R.id.poweroff:
+				showPoweroffText();
+				Intent mIntent = new Intent(Intent.ACTION_REQUEST_SHUTDOWN);
+				mIntent.putExtra(Intent.EXTRA_KEY_CONFIRM, false);
+				mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(mIntent);
+				break;
+			case R.id.reboot:
+				dismiss();
+				mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+				mPowerManager.reboot("");
+				break;
+			case R.id.cancel:
+				dismiss();
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	@Override
+	public IBinder onBind(Intent arg0) {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onBind");
+		return null;
+	}
+
+	@Override
+	public boolean onUnbind(Intent intent) {
+		// TODO Auto-generated method stub
+		Log.d(TAG, "onUnbind");
+		return super.onUnbind(intent);
+	}
+
+}
